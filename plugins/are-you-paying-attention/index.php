@@ -18,7 +18,7 @@ class AreYouPayingAttention {
   function adminAssets() {
     // wp_enqueue_script( $handle:string, $src:string, $deps:array, $ver:string|boolean|null, $in_footer:boolean )
     // wp_enqueue_script( handle, src, deps, in_footer )
-    wp_enqueue_script('ournewblocktype', plugin_dir_url(__FILE__) . 'test.js', array('wp-blocks', 'wp-element'));
+    wp_enqueue_script('ournewblocktype', plugin_dir_url(__FILE__) . 'build/index.js', array('wp-blocks', 'wp-element'));
   }
 }
 
