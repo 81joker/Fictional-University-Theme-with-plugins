@@ -90,42 +90,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-// Wordpress itself is going to add somthing called WP to the browsers global scope 
-// 1. Register a new block type
 wp.blocks.registerBlockType("ourplugin/are-you-paying-attention", {
   title: "Are You Paying Attention?",
   icon: "smiley",
   category: "common",
-  edit: function () {
-    // 
-    //     createElement(
-    //   'h2', // Element type (heading)
-    //   { className: 'my-custom-heading' }, // Attributes (class)
-    //   'This is my custom heading' // Content (text)
-    //     createElement(
-    //   'input',
-    //   {
-    //     type: 'text',
-    //     placeholder: 'Enter a title',
-    //     value: props.attributes.title,
-    //     onChange: (event) => props.setAttributes({ title: event.target.value }),
-    //   }
-    // );
-    // );
-    //
-    //   createElement
-    //   return wp.element.createElement("h3", null, "Hello, this is from the admin editor screen.")
-    // },
-    //  createElement
-    // return wp.element.createElement("div", null, [
-    //   wp.element.createElement("h1", null, "Hello, this is H1"),
-    //   wp.element.createElement("h4", {style:{color: 'skyblue'}}, "Hello, this is H4.")
-    // ])
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "lorem......."), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "This is from JSX"));
+  attributes: {
+    skyColor: {
+      type: "string"
+    },
+    grassColor: {
+      type: "string"
+    }
   },
-  save: function () {
-    // return wp.element.createElement("h1", null, "This is the frontend.")
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Halllo Save"));
+  edit: function (props) {
+    function updateSkyColor(event) {
+      props.setAttributes({
+        skyColor: event.target.value
+      });
+    }
+    function updateGrassColor(event) {
+      props.setAttributes({
+        grassColor: event.target.value
+      });
+    }
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      type: "text",
+      placeholder: "sky color",
+      value: props.attributes.skyColor,
+      onChange: updateSkyColor
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      type: "text",
+      placeholder: "grass color",
+      value: props.attributes.grassColor,
+      onChange: updateGrassColor
+    }));
+  },
+  save: function (props) {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Today the sky is ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: " skyColor"
+    }, props.attributes.skyColor), " and the grass is ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "grassColor"
+    }, props.attributes.grassColor)), ".");
   }
 });
 })();
